@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react'
 import { rfGame } from './api'
 import Building from './Building'
 import { Button, Label, Paper, Stamp } from './ui'
+import ReportProblem from './ReportProblem'
 
 // After the game: teams ranked by points, and each team's whole run with every answer and explanation, how many wrong
 // tries each step took, and the results download.
 export default function Results({ session, onNewGame, onLobby }) {
+  const reportCall = (payload) => rfGame({ ...payload, game_id: session.gameId, host_token: session.hostToken })
   const [report, setReport] = useState(null)
   const [error, setError] = useState('')
   const [open, setOpen] = useState(null)
@@ -59,6 +61,7 @@ export default function Results({ session, onNewGame, onLobby }) {
                       <Label className="mt-1">Answer</Label>
                       <p className="text-accent">{s.answer}</p>
                       {s.wrong > 0 && <p className="mt-1 text-bad">{s.wrong} wrong tr{s.wrong === 1 ? 'y' : 'ies'}</p>}
+                      <ReportProblem call={reportCall} location={`${t.name} · ${s.round}: ${s.title}`} question={s.prompt} answer={s.answer} className="mt-2" />
                     </li>
                   ))}
                 </ol>

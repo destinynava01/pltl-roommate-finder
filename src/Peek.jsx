@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Lewis from './Lewis'
 import { describeAnswer, roundOf } from './config'
 import { Button, Label } from './ui'
+import ReportProblem from './ReportProblem'
 
 // The leader's peek at one team: the step it's on (with the applicant its phones show), the lead agent, every
 // answer tried on this step, and how the earlier steps went. The answer stays behind a button, since the board is often on the
@@ -84,6 +85,7 @@ export default function Peek({ call, team, stamp, onClose }) {
                   <span className="text-xs text-muted">(hidden by default in case this is on the projector)</span>
                 </div>
                 {showAnswer && <p className="mt-2 rounded-lg bg-ok-soft px-3 py-2 text-sm text-ok">{data.answer}</p>}
+                <ReportProblem call={call} location={`${team.name} · ${roundOf(cur.round).title}: ${cur.title}`} question={cur.prompt} answer={data.answer ?? ''} className="mt-3 block" />
               </>
             )}
           </>
