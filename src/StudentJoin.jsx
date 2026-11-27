@@ -253,7 +253,7 @@ function Task({ c, color, lead, busy, canReveal, onAnswer, onReveal }) {
 
       <div className="mt-4">
         {cur.kind === 'build' && <Builder mol={cur.mol} total={cur.total} value={answer} onChange={setAnswer} />}
-        {cur.kind === 'number' && <Num label={cur.round === 'deposit' ? 'Valence electrons' : cur.show ? 'Formal charge (like 0, +1 or -1)' : 'Your answer'} placeholder="#" value={answer.number} onChange={(number) => set({ number })} />}
+        {cur.kind === 'number' && <Num label={cur.fixed ? 'Your answer' : cur.round === 'deposit' ? 'Valence electrons' : cur.show ? 'Formal charge (like 0, +1 or -1)' : 'Your answer'} placeholder="#" value={answer.number} onChange={(number) => set({ number })} />}
         {cur.kind === 'pick' && (
           <div className="space-y-3">
             {cur.fields.map((f) => (
