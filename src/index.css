@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+/*
+  The look: the Octet Arms at night. A deep indigo street, apartment-lobby panels, a rose neon "VACANCY" sign for the
+  main buttons and titles, warm window-light yellow for points, and amber for the "MOVED IN" tag. The token names
+  match the other PLTL games so shared pieces keep working.
+*/
+@theme {
+  --color-board: #12142a;      /* the street at night */
+  --color-card: #1c1f3b;       /* lobby panels */
+  --color-panel: #252949;      /* inputs, rows inside panels */
+  --color-hover: #2f3458;
+  --color-line: #3c4270;
+  --color-ink: #eef0fb;
+  --color-muted: #a3a8c9;
+  --color-accent: #fb7185;     /* the neon sign: main buttons, titles */
+  --color-accent-soft: #4a1f33;
+  --color-on-accent: #1a0b12;
+  --color-spike: #fde68a;      /* window light: points */
+  --color-fire: #f59e0b;       /* amber: the "MOVED IN" tag, the end button */
+  --color-info: #7dd3fc;
+  --color-ok: #4ade80;
+  --color-ok-soft: #12321f;
+  --color-bad: #f87171;
+  --color-bad-soft: #3a1616;
+  --color-warn: #fbbf24;
+  --color-warn-soft: #3a2c0c;
+  --font-display: "Fredoka", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-board);
+  color: var(--color-ink);
+}
+
+/* The street: indigo with faint brick and a neon glow */
+.lab-bg {
+  background-color: var(--color-board);
+  background-image:
+    radial-gradient(ellipse at 10% -10%, rgb(251 113 133 / 0.14), transparent 50%),
+    radial-gradient(ellipse at 95% 110%, rgb(103 232 249 / 0.10), transparent 50%),
+    linear-gradient(rgb(255 255 255 / 0.035) 2px, transparent 2px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.035) 2px, transparent 2px);
+  background-size: auto, auto, 72px 36px, 72px 72px;
+  background-attachment: fixed;
+}
+
+/* A poster on the wall, with a strip of tape on top when "pinned" */
+.paper {
+  position: relative;
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  box-shadow: 0 12px 30px rgb(0 0 0 / 0.45);
+}
+.pinned::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: calc(50% - 44px);
+  width: 88px;
+  height: 18px;
+  transform: rotate(-2deg);
+  background: rgb(253 224 71 / 0.75);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.3);
+}
+
+/* The "MOVED IN" tag: an amber stamp that pops in */
+.stamp {
+  display: inline-block;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-fire);
+  border: 3px solid var(--color-fire);
+  border-radius: 8px;
+  padding: 0.1em 0.5em;
+  transform: rotate(-3deg);
+  text-shadow: 0 0 12px rgb(245 158 11 / 0.55);
+}
+@keyframes stamp-in {
+  0% { transform: rotate(-3deg) scale(1.8); opacity: 0; }
+  60% { transform: rotate(-3deg) scale(0.94); opacity: 1; }
+  100% { transform: rotate(-3deg) scale(1); opacity: 1; }
+}
+.stamp-in { animation: stamp-in 0.4s ease-out both; }
+
+/* A small sticker label */
+.tag {
+  display: inline-block;
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-on-accent);
+  background: var(--color-accent);
+  border-radius: 6px;
+  padding: 0.1em 0.5em;
+  transform: rotate(-1.5deg);
+}
+
+/* Neon glows */
+.glow { filter: drop-shadow(0 0 3px currentColor); }
+
+/* A wrong try: the panel shakes */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-3px); }
+}
+.shake { animation: shake 0.35s ease-in-out; }
+@keyframes pop {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.pop { animation: pop 0.3s ease-out both; }
+
+/* A new floor's lights come on */
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fade { animation: fade 0.8s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .stamp-in, .shake, .pop, .fade { animation: none; }
+}
+
+/* Bigger screens (projectors, big monitors): everything a little larger so it reads from the back of the room. */
+@media (min-width: 1600px) { html { font-size: 106.25%; } }
+@media (min-width: 1900px) { html { font-size: 112.5%; } }
