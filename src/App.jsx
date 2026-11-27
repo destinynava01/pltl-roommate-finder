@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { rfGame } from './api'
 import Board from './Board'
+import Building from './Building'
 import Lobby from './Lobby'
 import StudentJoin from './StudentJoin'
 import { HUB_URL, SITE_NAME, SITE_TAGLINE } from './config'
@@ -70,17 +71,23 @@ function LeaderApp() {
 
   if (screen === 'landing') {
     return (
-      <CenterCard title={SITE_NAME}>
-        <p className="mt-2 font-display text-lg text-spike">{SITE_TAGLINE}</p>
-        <p className="mt-3 text-muted">
-          The Octet Arms on the projector, one apartment building per team. Atoms apply to move in: teams count the
-          deposit (valence electrons), give every atom a bed (Lewis structures), check the house rules (formal charge,
-          resonance, exceptions) and draw the floor plan (VSEPR). Every right answer adds a floor to the team&apos;s
-          building.
-        </p>
-        <Button className="mt-6" onClick={() => setScreen('lobby')}>🔑 Open the lobby</Button>
-        <a href={HUB_URL} className="mt-4 block text-sm font-bold text-info hover:brightness-125">← All games</a>
-      </CenterCard>
+      <main className="lab-bg flex min-h-dvh items-center justify-center p-4 text-ink">
+        <div className="w-full max-w-lg text-center">
+          <p className="neon flicker text-2xl">VACANCY</p>
+          <h1 className="mt-2 font-display text-5xl font-bold">{SITE_NAME}</h1>
+          <p className="mt-2 font-display text-lg text-spike">{SITE_TAGLINE}</p>
+          <Building className="mt-6 shadow-2xl" labels={false} teams={[{ name: 'The Octet Arms', color: '#fb7185', floors: ['NH₃', 'CO₂', 'SF₄', 'H₂O', 'XeF₄'], total: 8, applicant: 'BCl₃' }]} />
+          <div className="paper pinned mx-auto mt-8 rounded-2xl p-6">
+          <p className="text-muted">
+            One apartment building per team. Atoms apply to move in: count the deposit (valence electrons), give every
+            atom a bed (Lewis structures), check the house rules (formal charge, resonance, exceptions) and draw the floor
+            plan (VSEPR). Every right answer adds a floor.
+          </p>
+          <Button className="mt-6" onClick={() => setScreen('lobby')}>🔑 Open the leasing office</Button>
+          <a href={HUB_URL} className="mt-4 block text-sm font-bold text-info hover:brightness-125">← All games</a>
+          </div>
+        </div>
+      </main>
     )
   }
 

@@ -4,8 +4,8 @@
 export function CenterCard({ title, children }) {
   return (
     <main className="lab-bg flex min-h-dvh items-center justify-center p-4 text-ink">
-      <div className="paper pinned w-full max-w-md rounded-xl p-8 text-center">
-        <h1 className="font-display text-4xl text-accent">{title}</h1>
+      <div className="paper pinned w-full max-w-md rounded-2xl p-8 text-center">
+        <h1 className="font-display text-4xl font-bold text-ink">{title}</h1>
         {children}
       </div>
     </main>
@@ -25,7 +25,7 @@ const BUTTONS = {
 export function Button({ variant = 'primary', className = '', ...props }) {
   return (
     <button
-      className={`rounded-lg px-6 py-3 font-display text-lg tracking-wide transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40 ${BUTTONS[variant]} ${className}`}
+      className={`rounded-full px-7 py-3 font-display text-lg font-bold tracking-wide transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40 ${BUTTONS[variant]} ${className}`}
       {...props}
     />
   )
@@ -33,7 +33,7 @@ export function Button({ variant = 'primary', className = '', ...props }) {
 
 // A lobby panel
 export function Paper({ children, className = '', pinned = true }) {
-  return <section className={`paper rounded-xl p-5 ${pinned ? 'pinned' : ''} ${className}`}>{children}</section>
+  return <section className={`paper rounded-2xl p-5 ${pinned ? 'pinned' : ''} ${className}`}>{children}</section>
 }
 
 // The amber tag ("MOVED IN", "DONE")
