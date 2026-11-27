@@ -23,7 +23,7 @@ about 60:
 3. **House rules:** the formal charge of a highlighted atom, the better of two structures, and either how many
    resonance structures there are or which octet exception applies (odd electrons, fewer than 8, more than 8).
 4. **Floor plan:** electron-domain geometry, molecular shape and bond angle, up to seesaw, T-shaped and square planar.
-5. **Blanket hog** (optional): which atom gets δ−, and whether the bond is nonpolar, polar or ionic (the slides'
+5. **Blanket hog:** which atom gets δ−, and whether the bond is nonpolar, polar or ionic (the slides'
    cutoffs: a difference under 0.5, 0.5 to 2.0, and 2.0 or more).
 
 The best Lewis structure is found by trying every arrangement: formal charges closest to zero first, then any

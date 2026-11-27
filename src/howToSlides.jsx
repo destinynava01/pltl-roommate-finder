@@ -45,7 +45,7 @@ export const SLIDES = [
   },
   {
     title: 'The rounds',
-    text: 'The deposit (valence electrons), Move-in day (Lewis structures), House rules (formal charge, the better structure, resonance and octet exceptions), Floor plan (VSEPR shapes and bond angles), and Blanket hog (bond polarity, optional).',
+    text: 'The deposit (valence electrons), Move-in day (Lewis structures), House rules (formal charge, the better structure, resonance and octet exceptions), Floor plan (VSEPR shapes and bond angles), and Blanket hog (bond polarity).',
     art: (
       <Panel>
         <ol className="space-y-1 text-base">
@@ -53,7 +53,7 @@ export const SLIDES = [
           <li>🛏️ <b>Move-in day</b></li>
           <li>📋 <b>House rules</b></li>
           <li>📐 <b>Floor plan</b></li>
-          <li>🤝 <b>Blanket hog</b> <span className="text-muted">(optional)</span></li>
+          <li>🤝 <b>Blanket hog</b></li>
         </ol>
       </Panel>
     ),
