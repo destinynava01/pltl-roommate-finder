@@ -39,3 +39,7 @@ export function describeAnswer(cur, a = {}) {
   }
   return JSON.stringify(a)
 }
+
+// Leader scenarios (the /scenarios and /review pages): this game's id, and the pages' background
+export const SCENARIO_GAME = 'roommate'
+export const PAGE_BG = 'lab-bg'
